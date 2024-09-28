@@ -1,0 +1,14 @@
+C:\Users\vmuts\source\repos\Phumla Kamnandi project\bin\Debug\Phumla Kamnandi project.exe.config
+C:\Users\vmuts\source\repos\Phumla Kamnandi project\bin\Debug\Phumla Kamnandi project.exe
+C:\Users\vmuts\source\repos\Phumla Kamnandi project\bin\Debug\Phumla Kamnandi project.pdb
+C:\Users\vmuts\source\repos\Phumla Kamnandi project\obj\Debug\Phumla Kamnandi project.csproj.AssemblyReference.cache
+C:\Users\vmuts\source\repos\Phumla Kamnandi project\obj\Debug\Phumla_Kamnandi_project.Login.resources
+C:\Users\vmuts\source\repos\Phumla Kamnandi project\obj\Debug\Phumla_Kamnandi_project.Make_enquiry.resources
+C:\Users\vmuts\source\repos\Phumla Kamnandi project\obj\Debug\Phumla_Kamnandi_project.menupage.resources
+C:\Users\vmuts\source\repos\Phumla Kamnandi project\obj\Debug\Phumla_Kamnandi_project.Properties.Resources.resources
+C:\Users\vmuts\source\repos\Phumla Kamnandi project\obj\Debug\Phumla Kamnandi project.csproj.GenerateResource.cache
+C:\Users\vmuts\source\repos\Phumla Kamnandi project\obj\Debug\Phumla Kamnandi project.csproj.CoreCompileInputs.cache
+C:\Users\vmuts\source\repos\Phumla Kamnandi project\obj\Debug\Phumla Kamnandi project.exe
+C:\Users\vmuts\source\repos\Phumla Kamnandi project\obj\Debug\Phumla Kamnandi project.pdb
+C:\Users\vmuts\source\repos\Phumla Kamnandi project\obj\Debug\Phumla_Kamnandi_project.Make_a_Booking.resources
+C:\Users\vmuts\source\repos\Phumla Kamnandi project\obj\Debug\Phumla_Kamnandi_project.Welcome_page.resources
