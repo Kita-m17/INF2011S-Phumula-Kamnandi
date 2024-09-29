@@ -13,7 +13,7 @@ namespace Phumla_Kamnandi_project.Business
         private string bookingID;
         private DateTime signInDate;
         private DateTime signOutDate;
-        private string roomID;
+        private List<string> roomIDs;
         private string hotelID;
         private string guestID;
         private int numChildren;
@@ -40,10 +40,10 @@ namespace Phumla_Kamnandi_project.Business
             set { signOutDate = value; }
         }
 
-        public string RoomID
+        public List<string> RoomIDs
         {
-            get { return roomID; }
-            set { roomID = value; }
+            get { return roomIDs; }
+            set { roomIDs = value; }
         }
 
         public string HotelID
@@ -77,17 +77,26 @@ namespace Phumla_Kamnandi_project.Business
         #endregion
 
         #region Constructors
-        public Booking(string guestID, string hotelID, DateTime signInDate, DateTime signOutDate, string roomNum)
+        public Booking(string guestID, string hotelID, DateTime signInDate, DateTime signOutDate, List<string> roomNums)
         {
             this.bookingID = IDGenerator.GenerateWithPrefix("BID");
             this.guestID = guestID;
             this.hotelID = hotelID;
             this.signInDate = signInDate;
             this.signOutDate = signOutDate;
-            this.roomID = roomNum;
             this.numChildren = 0;
             this.numAdults = 1;
+            this.numRooms = 1;
 
+            //debatable
+            if (roomNums != null)
+            {
+                this.roomIDs = roomNums;
+            }
+            else
+            {
+                this.roomIDs = new List<string>();
+            }
         }
         #endregion
 
@@ -95,13 +104,26 @@ namespace Phumla_Kamnandi_project.Business
         /*
          * Method that reserves a room if its existing and available 
          */
-        public void getRoom(string roomID, DateTime signInDate, DateTime signOutDate)
+        public void reserveRooms(List<string> roomIDs, DateTime signInDate, DateTime signOutDate)
         {
-            Room room = Hotel.FindRoom(roomID);
-            if (room != null)
+            foreach (string roomID in roomIDs)
             {
-                room.reserveRoom(guestID, signInDate, signOutDate);
+                Room room = Hotel.FindRoom(roomID);
+                if (room != null)
+                {
+                    room.reserveRoom(guestID, signInDate, signOutDate);
+                }
+                else
+                {
+                    Console.WriteLine("Room " + roomID + " is not found.");
+                }
             }
+        }
+
+        //reserve all rooms in the booking
+        public void reserveAllRooms(DateTime signInDate, DateTime signOutDate)
+        {
+            reserveRooms(roomIDs, signInDate, signOutDate);
         }
         #endregion
     }
