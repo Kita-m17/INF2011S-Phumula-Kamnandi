@@ -81,7 +81,7 @@ namespace Phumla_Kamnandi_project.Business
         public void reserveRoom(string guestID, DateTime signInDate, DateTime signOutDate)
         {
             availability = false;
-            bookings.Add(new Booking(guestID, hotelID, signInDate, signOutDate, roomID));
+            bookings.Add(new Booking(guestID, hotelID, signInDate, signOutDate, roomIDs));
         }
 
         /*
