@@ -54,7 +54,20 @@ namespace Phumla_Kamnandi_project.Business
         #endregion
 
         #region Methods
-
+        public void processPayment() //add payment to database
+        {
+        
+        }
+        
+        public void refundPayment() //remove database from databas or change change amount to negative
+        {
+        
+        }
+        
+        public void verifyPayment()
+        {
+            // 
+        }
 
         #endregion
     }
