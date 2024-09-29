@@ -16,6 +16,8 @@ namespace Phumla_Kamnandi_project.Data
         private string details;
         private string location;
         private string facilities;
+        private bool hasPool;
+        private bool hasGamesRoom;
         private static Collection<Room> rooms;
         #endregion
 
@@ -61,6 +63,17 @@ namespace Phumla_Kamnandi_project.Data
             get { return rooms; }
             set { rooms = value; }
         }
+
+        public bool HasPool {
+            get { return hasPool;}
+            set { hasPool = value;}
+        }
+
+        public bool HasGamesRoom
+        {
+            get { return hasGamesRoom; }
+            set { hasGamesRoom = value; }
+        }
         #endregion
 
         #region Constructors    
@@ -73,6 +86,8 @@ namespace Phumla_Kamnandi_project.Data
             this.details = details;
             this.facilities = facilities;
             Hotel.rooms = new Collection<Room>();
+            this.hasPool = false;
+            this.hasGamesRoom = false;
         }
         #endregion
 
