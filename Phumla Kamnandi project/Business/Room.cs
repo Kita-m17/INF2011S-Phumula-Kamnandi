@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Phumla_Kamnandi_project.Data
+namespace Phumla_Kamnandi_project.Business
 {
     public class Room
     {
@@ -15,10 +13,9 @@ namespace Phumla_Kamnandi_project.Data
         private decimal rate;
         private string details;
         private bool availability;
-        private int capacity; //number of people it can hold (doesnt matter how 
+        private int capacity; //number of people it can hold (doesnt matter how) 
         private string hotelID;
         private List<Booking> bookings;
-        //private enum 
         #endregion
 
         #region Properties
@@ -52,18 +49,21 @@ namespace Phumla_Kamnandi_project.Data
             set { capacity = value; }
         }
 
-        public string HotelID { 
+        public string HotelID
+        {
             get { return hotelID; }
             set { hotelID = value; }
         }
 
-        public List<Booking> Bookings { 
+        public List<Booking> Bookings
+        {
             get { return bookings; }
         }
         #endregion region
 
         #region Constructors
-        public Room(string roomID, decimal rate, string details, string hotelID, bool availability, int capacity) { 
+        public Room(string roomID, decimal rate, string details, string hotelID, bool availability, int capacity)
+        {
             this.roomID = roomID;
             this.rate = rate;
             this.details = details;
@@ -78,7 +78,7 @@ namespace Phumla_Kamnandi_project.Data
         /*
          * reserve a room
          */
-        public void reserveRoom( string guestID, DateTime signInDate, DateTime signOutDate)
+        public void reserveRoom(string guestID, DateTime signInDate, DateTime signOutDate)
         {
             availability = false;
             bookings.Add(new Booking(guestID, hotelID, signInDate, signOutDate, roomID));
@@ -97,7 +97,7 @@ namespace Phumla_Kamnandi_project.Data
                 bool check2 = (signOutDate > booking.SignInDate && signOutDate <= booking.SignOutDate);
                 //checks if the new booking completely overlaps an existing booking
                 bool check3 = (signInDate < booking.SignInDate && signOutDate > booking.SignOutDate);
-                if ( check1 || check2 || check3)
+                if (check1 || check2 || check3)
                 {
                     return false;
                 }

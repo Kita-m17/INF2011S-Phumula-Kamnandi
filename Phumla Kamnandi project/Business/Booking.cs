@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Phumla_Kamnandi_project.Business;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Phumla_Kamnandi_project.Data
+namespace Phumla_Kamnandi_project.Business
 {
     public class Booking
     {

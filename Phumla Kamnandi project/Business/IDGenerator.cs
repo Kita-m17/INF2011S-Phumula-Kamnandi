@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms.VisualStyles;
 
-namespace Phumla_Kamnandi_project.Data
+namespace Phumla_Kamnandi_project.Business
 {
     public class IDGenerator
     {
@@ -15,7 +13,7 @@ namespace Phumla_Kamnandi_project.Data
         private static string chars = "ABCDEFGHIJKLIMNOPQRSTUVWXYZabcdefghijklmnopqrstvwxyz0123456789";
 
         private IDGenerator() { }
-        
+
         public static string makeID(int length = 8)
         {
             char[] id = new char[length];

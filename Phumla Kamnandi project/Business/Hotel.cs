@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Phumla_Kamnandi_project.Business;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Phumla_Kamnandi_project.Data
+namespace Phumla_Kamnandi_project.Business
 {
     public class Hotel
     {
@@ -64,9 +65,10 @@ namespace Phumla_Kamnandi_project.Data
             set { rooms = value; }
         }
 
-        public bool HasPool {
-            get { return hasPool;}
-            set { hasPool = value;}
+        public bool HasPool
+        {
+            get { return hasPool; }
+            set { hasPool = value; }
         }
 
         public bool HasGamesRoom
@@ -128,5 +130,21 @@ namespace Phumla_Kamnandi_project.Data
             return null;
             #endregion
         }
+
+        public void addFacilities()
+        {
+            if (hasPool && !hasGamesRoom)
+            {
+                this.facilities += "Has a Pool.";
+            }
+            else if (!hasPool && hasGamesRoom)
+            {
+                this.facilities += "Has a Games room.";
+            }
+            else
+            {
+                this.facilities += "Has a Pool and a Games room.";
+            }
+        }
     }
- }
+}
