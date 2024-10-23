@@ -8,27 +8,26 @@ namespace Phumla_Kamnandi_project.Business
 {
     public class Guest:Person
     {
-        #region Data members
-        private string guessID;
+        #region Data Members
+        private string guestID;
         #endregion
 
         #region Properties
         public string GuestID
         {
-            get { return guessID; }
-            set { guessID = value; }
+            get { return guestID; }
+            set { guestID = value; }
         }
         #endregion
 
         #region Constructor
-        public Guest(string guessID, string name, string surname, string phone, string email):base(name, surname, phone, email)
+        public Guest(string guestID, string name, string surname, string phone, string email, string address) : base(name, surname, phone, email, address)
         {
-            this.guessID = guessID;
+            this.guestID = guestID;
         }
-        #endregion
 
-        #region Methods
-
+        public Guest() :base()
+        { }
         #endregion
 
     }

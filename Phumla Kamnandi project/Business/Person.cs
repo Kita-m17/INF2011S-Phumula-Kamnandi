@@ -15,8 +15,10 @@ namespace Phumla_Kamnandi_project.Business
         private string email;
         private string address;
         #endregion
+
         #region Properties
-        public string Name { 
+        public string Name 
+        { 
             get{ return name; } 
             set{name = value;}
         }
@@ -33,20 +35,37 @@ namespace Phumla_Kamnandi_project.Business
             set { phoneNumber = value; }
         }
 
-        public string Email { 
+        public string Email 
+        { 
             get { return email; }
             set { email = value; }
+        }
+
+        public string Address
+        {
+            get { return address; }
+            set { address = value; }
         }
         #endregion
 
         #region Constructors
-        public Person(string name, string surname, string phone, string email)
+        public Person(string name, string surname, string phone, string email, string address)
         {
             this.name = name;
             this.surname = surname;
             this.phoneNumber = phone;
             this.email = email;
+            this.address = address;
         }
+
+        public Person(string name, string surname, string phone, string email){
+            this.name = name;
+            this.surname = surname;
+            this.phoneNumber = phone;
+            this.email = email;
+        }
+
+        public Person() { }
         #endregion
     }
 }

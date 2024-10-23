@@ -1,9 +1,12 @@
 ﻿using Phumla_Kamnandi_project.Business;
+using Phumla_Kamnandi_project.Data;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Phumla_Kamnandi_project.Business
 {
@@ -13,12 +16,16 @@ namespace Phumla_Kamnandi_project.Business
         private string bookingID;
         private DateTime signInDate;
         private DateTime signOutDate;
-        private List<string> roomIDs;
-        private string hotelID;
+        private string roomID;
+        private string hotelID; 
         private string guestID;
         private int numChildren;
         private int numAdults;
         private int numRooms;
+        private HotelController hotelController = new HotelController();
+        private GuestController guestController = new GuestController();
+        private Collection<Guest> guests;
+        private Collection<Hotel> hotels;
         #endregion
 
         #region Properties
@@ -40,10 +47,10 @@ namespace Phumla_Kamnandi_project.Business
             set { signOutDate = value; }
         }
 
-        public List<string> RoomIDs
+        public string RoomID
         {
-            get { return roomIDs; }
-            set { roomIDs = value; }
+            get { return roomID; }
+            set { roomID = value; }
         }
 
         public string HotelID
@@ -52,7 +59,7 @@ namespace Phumla_Kamnandi_project.Business
             set { hotelID = value; }
         }
 
-        public string GuessID
+        public string GuestID
         {
             get { return guestID; }
             set { guestID = value; }
@@ -73,11 +80,12 @@ namespace Phumla_Kamnandi_project.Business
         public int NumRooms
         {
             get { return numRooms; }
+            set { numRooms = value; }
         }
         #endregion
 
         #region Constructors
-        public Booking(string guestID, string hotelID, DateTime signInDate, DateTime signOutDate, List<string> roomNums)
+        public Booking(string guestID, string hotelID, DateTime signInDate, DateTime signOutDate, string roomNum)
         {
             this.bookingID = IDGenerator.GenerateWithPrefix("BID");
             this.guestID = guestID;
@@ -87,43 +95,75 @@ namespace Phumla_Kamnandi_project.Business
             this.numChildren = 0;
             this.numAdults = 1;
             this.numRooms = 1;
+            this.roomID = roomNum;
+            this.hotels = hotelController.AllHotels;
+            this.guests = guestController.AllGuests;
+        }
 
-            //debatable
-            if (roomNums != null)
-            {
-                this.roomIDs = roomNums;
-            }
-            else
-            {
-                this.roomIDs = new List<string>();
-            }
+        public Booking()
+        {
+            this.bookingID = IDGenerator.GenerateWithPrefix("BID");
+            this.guestController = new GuestController();
+            this.hotels = hotelController.AllHotels;
+            this.guests = guestController.AllGuests;
         }
         #endregion
 
         #region Methods
-        /*
-         * Method that reserves a room if its existing and available 
-         */
-        public void reserveRooms(List<string> roomIDs, DateTime signInDate, DateTime signOutDate)
+        public void reserveRooms(string roomID, DateTime signInDate, DateTime signOutDate)
         {
-            foreach (string roomID in roomIDs)
+            Room room = Hotel.FindRoom(roomID);
+            if (room != null)
             {
-                Room room = Hotel.FindRoom(roomID);
-                if (room != null)
-                {
-                    room.reserveRoom(guestID, signInDate, signOutDate);
-                }
-                else
-                {
-                    Console.WriteLine("Room " + roomID + " is not found.");
-                }
+                room.reserveRoom(guestID, signInDate, signOutDate);
+            }
+            else
+            {
+                Console.WriteLine("Room " + roomID + " is not found.");
             }
         }
 
-        //reserve all rooms in the booking
-        public void reserveAllRooms(DateTime signInDate, DateTime signOutDate)
+        public TimeSpan getDuration()
         {
-            reserveRooms(roomIDs, signInDate, signOutDate);
+            TimeSpan duration = signOutDate.Subtract(signInDate);
+            return duration;
+        }
+
+        public Hotel getHotel()
+        {
+            foreach (Hotel hotel in hotels)
+            {
+                if (hotel.HotelID.Equals(this.HotelID))
+                {
+                    return hotel;
+                }
+            }
+            return null;
+        }
+
+        public decimal getBookingAmount()
+        {
+            int bookingDuration = this.getDuration().Days;
+            Hotel hotel = getHotel();
+            return bookingDuration * hotel.getRate(signInDate, signOutDate);
+        }
+
+        public decimal getBookingDeposit()
+        {
+            decimal discount = (decimal)10 / 100;
+            return getBookingAmount() * discount;
+        }
+
+        public Guest getGuest()
+        {
+            foreach(Guest guest in guestController.AllGuests)
+            {
+                if (guest.GuestID == guestID)
+                {
+                    return guest;
+                }
+            }
+            return null;
         }
         #endregion
     }

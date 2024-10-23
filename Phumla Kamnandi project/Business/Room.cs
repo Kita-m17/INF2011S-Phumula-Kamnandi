@@ -15,7 +15,7 @@ namespace Phumla_Kamnandi_project.Business
         private bool availability;
         private int capacity; //number of people it can hold (doesnt matter how) 
         private string hotelID;
-        private List<Booking> bookings;
+        //private List<Booking> bookings;
         #endregion
 
         #region Properties
@@ -54,11 +54,13 @@ namespace Phumla_Kamnandi_project.Business
             get { return hotelID; }
             set { hotelID = value; }
         }
-
+        
+        /*
         public List<Booking> Bookings
         {
             get { return bookings; }
         }
+        */
         #endregion region
 
         #region Constructors
@@ -70,18 +72,19 @@ namespace Phumla_Kamnandi_project.Business
             this.availability = availability;
             this.capacity = capacity;
             this.hotelID = hotelID;
-            this.bookings = new List<Booking>();
+            //this.bookings = new List<Booking>();
         }
         #endregion
 
         #region Methods
+
         /*
          * reserve a room
          */
         public void reserveRoom(string guestID, DateTime signInDate, DateTime signOutDate)
         {
             availability = false;
-            bookings.Add(new Booking(guestID, hotelID, signInDate, signOutDate, roomIDs));
+            //bookings.Add(new Booking(guestID, hotelID, signInDate, signOutDate, null)); //changed to null for now
         }
 
         /*
@@ -89,6 +92,7 @@ namespace Phumla_Kamnandi_project.Business
          */
         public bool checkRoomAvailability(DateTime signInDate, DateTime signOutDate)
         {
+            /*
             foreach (Booking booking in bookings)
             {
                 //check if the sign-in date of a new booking falls within an existing booking period
@@ -101,8 +105,11 @@ namespace Phumla_Kamnandi_project.Business
                 {
                     return false;
                 }
+            
             }
             return true;
+            */
+            return availability;
         }
 
         #endregion

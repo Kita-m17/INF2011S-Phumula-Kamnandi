@@ -9,7 +9,6 @@ namespace Phumla_Kamnandi_project.Business
     internal class Payment
     {
         #region Data Members
-        //instance variables
         private string paymentID;
         private DateTime paymentDate;
         private double paymentAmount;
@@ -17,7 +16,6 @@ namespace Phumla_Kamnandi_project.Business
         #endregion
 
         #region Properties
-        //getters and setters
         public string PaymentID
         {
             get { return paymentID; }
@@ -42,7 +40,7 @@ namespace Phumla_Kamnandi_project.Business
         }
         #endregion
 
-        #region Constructors
+        #region Constructor
         public Payment(string paymentID, DateTime paymentDate,  double paymentAmount, string paymentMethod)
         {
             this.paymentID = paymentID;
@@ -50,7 +48,6 @@ namespace Phumla_Kamnandi_project.Business
             this.paymentAmount = paymentAmount;
             this.paymentMethod = paymentMethod;
         }
-
         #endregion
 
         #region Methods
@@ -64,11 +61,10 @@ namespace Phumla_Kamnandi_project.Business
         
         }
         
-        public void verifyPayment()
+        public void verifyPayment() // Verify the payment.
         {
-            // 
+          
         }
-
         #endregion
     }
 }
