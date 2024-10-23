@@ -93,6 +93,36 @@ namespace Phumla_Kamnandi_project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap edit_8023699 {
+            get {
+                object obj = ResourceManager.GetObject("edit_8023699", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap eye {
+            get {
+                object obj = ResourceManager.GetObject("eye", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap garbage_17608000 {
+            get {
+                object obj = ResourceManager.GetObject("garbage_17608000", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap images {
             get {
                 object obj = ResourceManager.GetObject("images", resourceCulture);
@@ -137,6 +167,16 @@ namespace Phumla_Kamnandi_project.Properties {
         internal static System.Drawing.Bitmap Screenshot_2024_09_22_141043 {
             get {
                 object obj = ResourceManager.GetObject("Screenshot 2024-09-22 141043", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_4398568 {
+            get {
+                object obj = ResourceManager.GetObject("search_4398568", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
